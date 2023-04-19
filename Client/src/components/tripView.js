@@ -5,7 +5,8 @@ export default function TripView({ item }) {
   return (
     <View style={StyleSheet.container}>
       <Text>
-        {item.country} {item.days + " days"}
+        {item.country} {item.entrydate} + "-" {item.exitdate}{" "}
+        {item.days + " days"}
       </Text>
     </View>
   );

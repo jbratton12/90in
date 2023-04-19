@@ -1,23 +1,15 @@
-// import { StatusBar } from "expo-status-bar";
 import { StyleSheet, Text, View, SafeAreaView } from "react-native";
-import { useState, useEffect } from "react";
-import { fetchTrips } from "./service";
 import { NavigationContainer } from "@react-navigation/native";
 import TabNavigator from "./Client/src/screens/BottomTabsNavigator";
+import { createStackNavigator } from "@react-navigation/stack";
+
+const Stack = createStackNavigator();
+
+function StackScreen() {
+  return <Stack.Navigator>{/* Add your stack screens here */}</Stack.Navigator>;
+}
 
 export default function App() {
-  //Set state
-  // const [tripArr, setTrips] = useState([]);
-
-  // useEffect(() => {
-  //   const getTrips = async () => {
-  //     const tripsFromDatabase = await fetchTrips();
-  //     setTrips(tripsFromDatabase);
-  //   };
-
-  //   getTrips();
-  // }, []);
-
   return (
     <NavigationContainer>
       <TabNavigator />
@@ -33,9 +25,5 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     // padding: 10,
     // margin: 10,
-  },
-
-  header: {
-    backgroundColor: "red",
   },
 });
