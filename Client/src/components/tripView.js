@@ -1,7 +1,7 @@
 import React from "react";
 import { View, Text, StyleSheet } from "react-native";
 
-export default function tripView({ item }) {
+export default function TripView({ item }) {
   return (
     <View style={StyleSheet.container}>
       <Text>
@@ -13,7 +13,7 @@ export default function tripView({ item }) {
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: "#fffdd0",
+    backgroundColor: "black",
     margin: 10,
     padding: 10,
     borderColor: "blue",

@@ -1,31 +1,26 @@
-import { StatusBar } from "expo-status-bar";
+// import { StatusBar } from "expo-status-bar";
 import { StyleSheet, Text, View, SafeAreaView } from "react-native";
-import Header from "./Client/src/components/header";
 import { useState, useEffect } from "react";
 import { fetchTrips } from "./service";
-import TripList from "./Client/src/components/tripList";
 import { NavigationContainer } from "@react-navigation/native";
+import TabNavigator from "./Client/src/screens/BottomTabsNavigator";
 
 export default function App() {
   //Set state
-  const [tripArr, setTrips] = useState([]);
+  // const [tripArr, setTrips] = useState([]);
 
-  useEffect(() => {
-    const getTrips = async () => {
-      const tripsFromDatabase = await fetchTrips();
-      setTrips(tripsFromDatabase);
-    };
+  // useEffect(() => {
+  //   const getTrips = async () => {
+  //     const tripsFromDatabase = await fetchTrips();
+  //     setTrips(tripsFromDatabase);
+  //   };
 
-    getTrips();
-  }, []);
+  //   getTrips();
+  // }, []);
 
   return (
     <NavigationContainer>
-      <SafeAreaView style={styles.container}>
-        <Text>NinetyIn</Text>
-        <TripList tripArr={tripArr} />
-        <StatusBar style="auto" />
-      </SafeAreaView>
+      <TabNavigator />
     </NavigationContainer>
   );
 }
@@ -33,10 +28,14 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#fff",
+    backgroundColor: "pink",
     alignItems: "center",
     justifyContent: "center",
-    padding: 10,
-    margin: 10,
+    // padding: 10,
+    // margin: 10,
+  },
+
+  header: {
+    backgroundColor: "red",
   },
 });
