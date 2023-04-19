@@ -1,11 +1,11 @@
 import React from "react";
 import { View, Text, StyleSheet } from "react-native";
 
-export default function Trip({ trip }) {
+export default function tripView({ item }) {
   return (
     <View style={StyleSheet.container}>
       <Text>
-        {trip.country} {trip.days}
+        {item.country} {item.days + " days"}
       </Text>
     </View>
   );

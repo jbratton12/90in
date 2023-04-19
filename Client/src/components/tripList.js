@@ -7,8 +7,8 @@ export default function TripList({ tripArr }) {
     <View style={styles.container}>
       <FlatList
         data={tripArr}
-        keyExtractor={(trip) => trip._id}
-        renderTrip={({ trip }) => <TripView trip={trip} />}
+        keyExtractor={(item) => item._id}
+        renderItem={({ item }) => <TripView item={item} />}
       />
     </View>
   );

@@ -4,10 +4,10 @@ import Header from "./Client/src/components/header";
 import { useState, useEffect } from "react";
 import { fetchTrips } from "./service";
 import TripList from "./Client/src/components/tripList";
+import { NavigationContainer } from "@react-navigation/native";
 
 export default function App() {
   //Set state
-
   const [tripArr, setTrips] = useState([]);
 
   useEffect(() => {
@@ -20,11 +20,13 @@ export default function App() {
   }, []);
 
   return (
-    <SafeAreaView style={styles.container}>
-      <Text>NinetyIn</Text>
-      <TripList tripArr={tripArr} />
-      <StatusBar style="auto" />
-    </SafeAreaView>
+    <NavigationContainer>
+      <SafeAreaView style={styles.container}>
+        <Text>NinetyIn</Text>
+        <TripList tripArr={tripArr} />
+        <StatusBar style="auto" />
+      </SafeAreaView>
+    </NavigationContainer>
   );
 }
 
