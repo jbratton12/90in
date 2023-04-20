@@ -1,10 +1,8 @@
 import React from "react";
-import { View, Text, StyleSheet } from "react-native";
+import { View, Text, StyleSheet, ScrollView } from "react-native";
 import moment from "moment";
 
 export default function TripView({ item }) {
-  console.log(item);
-
   // Parse entrydate and exitdate into Moment objects
   const entryDate = moment(item.entrydate, "DD-MM-YYYY");
   const exitDate = moment(item.exitdate, "DD-MM-YYYY");
@@ -17,22 +15,32 @@ export default function TripView({ item }) {
     ? exitDate.diff(entryDate, "days") + 1 // Adding 1 to include both entry and exit dates
     : "Invalid Dates";
 
+  // Modify the "days" variable to "day" if value is 1
+  const daysText = days === 1 ? "day" : "days";
+
   return (
-    <View>
-      <Text>Country: {item.country}</Text>
-      <Text>Entry Date: {item.entrydate}</Text>
-      <Text>Exit Date: {item.exitdate}</Text>
-      <Text>Duration: {days} days</Text>
-    </View>
+    <ScrollView style={styles.container} showsVerticalScrollIndicator={false}>
+      <Text style={styles.text}>Country: {item.country}</Text>
+      <Text style={styles.text}>Entry Date: {item.entrydate}</Text>
+      <Text style={styles.text}>Exit Date: {item.exitdate}</Text>
+      <Text style={styles.text}>
+        Duration: {days} {daysText}
+      </Text>
+    </ScrollView>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: "black",
+    backgroundColor: "pink",
     margin: 10,
     padding: 10,
-    borderColor: "blue",
+    borderColor: "pink",
     borderWidth: 2,
+    lineHeight: 1,
+  },
+  text: {
+    fontSize: 16,
+    lineHeight: 24, // Increase this value to adjust line height
   },
 });

@@ -11,12 +11,13 @@ import {
 } from "react-native";
 import DateTimePicker from "@react-native-community/datetimepicker";
 import { postTrip } from "../../../service";
+import moment from "moment";
 
 export default function FormModal({ isVisible, onClose, onSubmit }) {
   const [country, setCountry] = useState("");
   const [entryDate, setEntryDate] = useState("");
   const [exitDate, setExitDate] = useState("");
-  const [days, setDays] = useState("");
+  //   const [days, setDays] = useState("");
   const [showDatePicker, setShowDatePicker] = useState(false);
   const [datePickerField, setDatePickerField] = useState("");
 
@@ -37,16 +38,31 @@ export default function FormModal({ isVisible, onClose, onSubmit }) {
   const handleFormSubmit = async () => {
     // Form validation logic
     // Check if all fields are filled
-    if (country === "" || entryDate === "" || exitDate === "" || days === "") {
+    if (country === "" || entryDate === "" || exitDate === "") {
       alert("Please fill in all fields");
       return;
     }
+
+    // Check if entrydate and exitdate are valid
+
+    const startDate = moment(entryDate, "DD-MM-YYYY");
+    const endDate = moment(exitDate, "DD-MM-YYYY");
+
+    const areDatesValid = startDate.isValid() && endDate.isValid();
+    console.log(startDate, endDate);
+
+    const days = areDatesValid
+      ? endDate.diff(startDate, "days") + 1 // Adding 1 to include both entry and exit dates
+      : "Invalid Dates";
+
+    console.log(days);
+
     // Create a new trip object
     const newTrip = {
       country,
       entryDate,
       exitDate,
-      days: parseInt(days),
+      days,
     };
 
     try {
@@ -59,7 +75,7 @@ export default function FormModal({ isVisible, onClose, onSubmit }) {
       setCountry("");
       setEntryDate("");
       setExitDate("");
-      setDays("");
+      //   setDays("");
       onClose();
     } catch (error) {
       // Handle error if POST request fails
@@ -67,12 +83,13 @@ export default function FormModal({ isVisible, onClose, onSubmit }) {
       alert("Failed to create trip. Please try again.");
     }
   };
+
   const handleModalClose = (onClose) => {
     // Reset form input fields when modal is closed
     setCountry("");
     setEntryDate("");
     setExitDate("");
-    setDays("");
+    // setDays("");
     onClose();
   };
 
@@ -123,14 +140,6 @@ export default function FormModal({ isVisible, onClose, onSubmit }) {
             onChange={handleDatePicker}
           />
         )}
-        <TextInput
-          style={styles.input}
-          placeholder="Number of Days"
-          placeholderTextColor="gray"
-          value={days}
-          onChangeText={(text) => setDays(text)}
-          keyboardType="numeric"
-        />
         <View style={styles.buttonContainer}>
           <Button title="Submit" onPress={() => handleFormSubmit()} />
         </View>

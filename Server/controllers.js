@@ -14,7 +14,7 @@ const getAllTrips = async (req, res) => {
 
 const AddTrip = async (req, res) => {
   const trip = req.body;
-  console.log(trip);
+  // console.log(trip);
   //the request body/ user input
   try {
     const tripCreated = await Trip.create({
@@ -24,7 +24,7 @@ const AddTrip = async (req, res) => {
       exitdate: trip.exitDate,
       days: trip.days,
     });
-    console.log(tripCreated);
+    // console.log(tripCreated);
     res.status(201);
     res.send(tripCreated);
   } catch (e) {
