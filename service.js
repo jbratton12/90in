@@ -22,4 +22,12 @@ const postTrip = async (payload) => {
   return data;
 };
 
-module.exports = { fetchTrips, postTrip };
+// Delete Trip from the DB
+const deleteFromDB = async (id) => {
+  await fetch(`http://192.168.0.198:3000/comments/${id}`, {
+    method: "DELETE",
+  });
+  return true;
+};
+
+module.exports = { fetchTrips, postTrip, deleteFromDB };

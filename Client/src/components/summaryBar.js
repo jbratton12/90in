@@ -24,7 +24,7 @@ export default function SummaryBar() {
 
   return (
     <Text style={styles.container}>
-      You're in! You have {totalDays} days remaing to travel in the Schengen
+      You're in! You have {totalDays} days remaining to travel in the Schengen
       Zone from {moment().format("DD/M/YYYY")}
     </Text>
   );

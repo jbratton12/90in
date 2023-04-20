@@ -8,6 +8,6 @@ router.post("/trips", controllers.AddTrip);
 
 // router.put("/trips", controllers.editTrip)
 
-// router.delete("/trips", controllers.deleteTrip)
+router.delete("/trips/:id", controllers.deleteTrip);
 
 module.exports = router;

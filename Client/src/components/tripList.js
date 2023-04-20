@@ -1,16 +1,33 @@
 import React, { useState } from "react";
 import { View, FlatList, Text, StyleSheet } from "react-native";
 import TripView from "./tripView";
+import { deleteFromDB } from "../../../service";
 
 export default function TripList({ tripArr }) {
-  //   console.log(tripArr);
+  // Sort the tripArr by entryDate in ascending order
+  const sortedTripArr = tripArr.sort((a, b) => {
+    return new Date(a.entrydate) - new Date(b.entrydate);
+  });
+
+  const handleDelete = (trip) => {
+    deleteFromDB(trip.id)
+      //   .then(() => {
+      //     // If deleteFromDB returns a successful response, update the state with the filtered tripArr
+      //     setTrips(tripArr.filter((item) => item.id !== trip.id));
+      //   })
+      .catch((error) => {
+        // If deleteFromDB encounters an error, display an alert
+        alert("Error: " + error);
+      });
+  };
+
   return (
     <View style={styles.container}>
       <FlatList
-        data={tripArr}
+        data={sortedTripArr} // Use sortedTripArr instead of tripArr
         keyExtractor={(item) => item._id}
         renderItem={({ item }) => (
-          <TripView item={item} styles={styles.trips} />
+          <TripView item={item} styles={styles.trips} onDelete={handleDelete} />
         )}
       />
     </View>

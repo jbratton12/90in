@@ -34,4 +34,17 @@ const AddTrip = async (req, res) => {
   }
 };
 
-module.exports = { AddTrip, getAllTrips };
+const deleteTrip = async (req, res) => {
+  try {
+    // Delete a trip by id
+    const deletedTrip = await Trip.findByIdAndDelete(req.params.id);
+    if (!deletedTrip) {
+      return res.status(404).send("Trip not found");
+    }
+    res.send("Trip deleted");
+  } catch (e) {
+    res.status(500).send(e.message);
+  }
+};
+
+module.exports = { AddTrip, getAllTrips, deleteTrip };
