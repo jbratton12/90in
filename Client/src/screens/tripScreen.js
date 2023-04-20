@@ -32,7 +32,7 @@ export default function TripScreen() {
   return (
     <SafeAreaView style={styles.container}>
       <Text style={styles.text}>NinetyIn</Text>
-      <TripList tripArr={tripArr} />
+      <TripList tripArr={tripArr} setTrips={setTrips} />
       <StatusBar style="auto" />
       <FormModal
         isVisible={isFormVisible}

@@ -24,7 +24,7 @@ const postTrip = async (payload) => {
 
 // Delete Trip from the DB
 const deleteFromDB = async (id) => {
-  await fetch(`http://192.168.0.198:3000/comments/${id}`, {
+  await fetch(`http://192.168.0.198:3000/trips/${id}`, {
     method: "DELETE",
   });
   return true;
