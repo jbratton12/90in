@@ -1,16 +1,21 @@
 import React from "react";
 import { View, Text, StyleSheet } from "react-native";
+import moment from "moment";
 
 export default function TripView({ item }) {
   console.log(item);
-  const entryDate = new Date(item.entrydate);
-  console.log(entryDate);
-  const exitDate = new Date(item.exitdate);
-  console.log(exitDate);
-  const timeDifference = exitDate.getTime() - entryDate.getTime();
-  console.log(timeDifference);
-  const daysDifference = Math.ceil(timeDifference / (1000 * 60 * 60 * 24));
-  const days = daysDifference + 1; // Adding 1 to include both entry and exit dates
+
+  // Parse entrydate and exitdate into Moment objects
+  const entryDate = moment(item.entrydate, "DD-MM-YYYY");
+  const exitDate = moment(item.exitdate, "DD-MM-YYYY");
+
+  // Check if entrydate and exitdate are valid
+  const areDatesValid = entryDate.isValid() && exitDate.isValid();
+
+  // Calculate days difference only if both dates are valid
+  const days = areDatesValid
+    ? exitDate.diff(entryDate, "days") + 1 // Adding 1 to include both entry and exit dates
+    : "Invalid Dates";
 
   return (
     <View>

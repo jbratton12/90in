@@ -9,7 +9,9 @@ export default function TripList({ tripArr }) {
       <FlatList
         data={tripArr}
         keyExtractor={(item) => item._id}
-        renderItem={({ item }) => <TripView item={item} />}
+        renderItem={({ item }) => (
+          <TripView item={item} styles={styles.trips} />
+        )}
       />
     </View>
   );
@@ -24,5 +26,9 @@ const styles = StyleSheet.create({
     padding: 10,
     width: 300,
     textAlign: "center",
+  },
+
+  trips: {
+    backgroundColor: "red",
   },
 });
