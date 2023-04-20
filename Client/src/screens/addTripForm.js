@@ -17,7 +17,6 @@ export default function FormModal({ isVisible, onClose, onSubmit }) {
   const [country, setCountry] = useState("");
   const [entryDate, setEntryDate] = useState("");
   const [exitDate, setExitDate] = useState("");
-  //   const [days, setDays] = useState("");
   const [showDatePicker, setShowDatePicker] = useState(false);
   const [datePickerField, setDatePickerField] = useState("");
 
@@ -49,13 +48,13 @@ export default function FormModal({ isVisible, onClose, onSubmit }) {
     const endDate = moment(exitDate, "DD-MM-YYYY");
 
     const areDatesValid = startDate.isValid() && endDate.isValid();
-    console.log(startDate, endDate);
+    // console.log(startDate, endDate);
 
     const days = areDatesValid
       ? endDate.diff(startDate, "days") + 1 // Adding 1 to include both entry and exit dates
       : "Invalid Dates";
 
-    console.log(days);
+    // console.log(days);
 
     // Create a new trip object
     const newTrip = {
@@ -75,7 +74,6 @@ export default function FormModal({ isVisible, onClose, onSubmit }) {
       setCountry("");
       setEntryDate("");
       setExitDate("");
-      //   setDays("");
       onClose();
     } catch (error) {
       // Handle error if POST request fails

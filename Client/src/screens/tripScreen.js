@@ -31,6 +31,7 @@ export default function TripScreen() {
 
   return (
     <SafeAreaView style={styles.container}>
+      <Text style={styles.text}>NinetyIn</Text>
       <TripList tripArr={tripArr} />
       <StatusBar style="auto" />
       <FormModal
@@ -38,7 +39,11 @@ export default function TripScreen() {
         onClose={handleFormToggle}
         onSubmit={handleFormSubmit}
       />
-      <Button title="Add Trip" onPress={handleFormToggle} />
+      <Button
+        title="Add Trip"
+        onPress={handleFormToggle}
+        style={styles.button}
+      />
     </SafeAreaView>
   );
 }
@@ -47,14 +52,23 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     height: 100,
-    backgroundColor: "pink",
+    // backgroundColor: "pink",
     alignItems: "center",
     justifyContent: "center",
-    // padding: 10,
-    // horizontalmargin: 0,
   },
 
   button: {
     backgroundColor: "red",
+  },
+
+  text: {
+    // flex: 1,
+    backgroundColor: "lightblue",
+    alignItems: "center",
+    justifyContent: "center",
+    textAlign: "center",
+    padding: 10,
+    margin: 10,
+    width: 340,
   },
 });

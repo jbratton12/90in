@@ -1,12 +1,15 @@
 import React from "react";
-import { View, Text, StyleSheet, SafeAreaView } from "react-native";
+import { View, Text, StyleSheet, SafeAreaView, useState } from "react-native";
 import SummaryBar from "../components/summaryBar";
+// import { fetchTrips } from "../../../service";
+import CurrentTrip from "../components/currentTrip";
 
 export default function HomeScreen() {
   return (
     <SafeAreaView>
       <Text style={styles.container}>NinetyIn</Text>
       <SummaryBar />
+      <CurrentTrip />
     </SafeAreaView>
   );
 }
