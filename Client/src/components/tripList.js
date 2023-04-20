@@ -3,6 +3,7 @@ import { View, FlatList, Text, StyleSheet } from "react-native";
 import TripView from "./tripView";
 
 export default function TripList({ tripArr }) {
+  console.log(tripArr);
   return (
     <View style={styles.container}>
       <FlatList
@@ -19,7 +20,9 @@ const styles = StyleSheet.create({
     backgroundColor: "teal",
     flex: 1,
     height: 100,
-    margin: 0,
-    padding: 0,
+    margin: 10,
+    padding: 10,
+    width: 300,
+    textAlign: "center",
   },
 });

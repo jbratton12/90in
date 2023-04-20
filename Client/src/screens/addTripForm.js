@@ -8,15 +8,15 @@ import {
   Button,
   KeyboardAvoidingView,
   TouchableOpacity,
-  SafeAreaView,
 } from "react-native";
 import DateTimePicker from "@react-native-community/datetimepicker";
+import { postTrip } from "../../../service";
 
 export default function FormModal({ isVisible, onClose, onSubmit }) {
-  const [tripName, setTripName] = useState("");
-  const [fromDate, setFromDate] = useState("");
-  const [toDate, setToDate] = useState("");
-  const [numberOfDays, setNumberOfDays] = useState("");
+  const [country, setCountry] = useState("");
+  const [entryDate, setEntryDate] = useState("");
+  const [exitDate, setExitDate] = useState("");
+  const [days, setDays] = useState("");
   const [showDatePicker, setShowDatePicker] = useState(false);
   const [datePickerField, setDatePickerField] = useState("");
 
@@ -26,48 +26,53 @@ export default function FormModal({ isVisible, onClose, onSubmit }) {
       const formattedDate = `${selectedDate.getDate()}/${
         selectedDate.getMonth() + 1
       }/${selectedDate.getFullYear()}`;
-      if (datePickerField === "fromDate") {
-        setFromDate(formattedDate);
-      } else if (datePickerField === "toDate") {
-        setToDate(formattedDate);
+      if (datePickerField === "entryDate") {
+        setEntryDate(formattedDate);
+      } else if (datePickerField === "exitDate") {
+        setExitDate(formattedDate);
       }
     }
   };
 
-  const handleFormSubmit = () => {
+  const handleFormSubmit = async () => {
     // Form validation logic
     // Check if all fields are filled
-    if (
-      tripName === "" ||
-      fromDate === "" ||
-      toDate === "" ||
-      numberOfDays === ""
-    ) {
+    if (country === "" || entryDate === "" || exitDate === "" || days === "") {
       alert("Please fill in all fields");
       return;
     }
     // Create a new trip object
     const newTrip = {
-      tripName,
-      fromDate,
-      toDate,
-      numberOfDays: parseInt(numberOfDays),
+      country,
+      entryDate,
+      exitDate,
+      days: parseInt(days),
     };
-    onSubmit(newTrip);
-    // Clear input fields after submitting
-    setTripName("");
-    setFromDate("");
-    setToDate("");
-    setNumberOfDays("");
-    onClose();
-  };
 
-  const handleModalClose = () => {
+    try {
+      // Send POST request to server to create new trip
+      const createdTrip = await postTrip(newTrip);
+
+      // Call the onSubmit callback with the newly created trip
+      onSubmit(createdTrip);
+      // Clear input fields after submitting
+      setCountry("");
+      setEntryDate("");
+      setExitDate("");
+      setDays("");
+      onClose();
+    } catch (error) {
+      // Handle error if POST request fails
+      console.error("Failed to create trip:", error);
+      alert("Failed to create trip. Please try again.");
+    }
+  };
+  const handleModalClose = (onClose) => {
     // Reset form input fields when modal is closed
-    setTripName("");
-    setFromDate("");
-    setToDate("");
-    setNumberOfDays("");
+    setCountry("");
+    setEntryDate("");
+    setExitDate("");
+    setDays("");
     onClose();
   };
 
@@ -81,32 +86,34 @@ export default function FormModal({ isVisible, onClose, onSubmit }) {
         <Text style={styles.title}>Add Trip</Text>
         <TextInput
           style={styles.input}
-          placeholder="Trip Name"
+          placeholder="Country"
           placeholderTextColor="gray"
-          value={tripName}
-          onChangeText={(text) => setTripName(text)}
+          value={country}
+          onChangeText={(text) => setCountry(text)}
         />
         <TouchableOpacity
           style={styles.datePickerField}
           onPress={() => {
             setShowDatePicker(true);
-            setDatePickerField("fromDate");
+            setDatePickerField("entryDate");
           }}
         >
           <Text style={styles.datePickerLabel}>From Date:</Text>
           <Text style={styles.datePickerValue}>
-            {fromDate || "Select date"}
+            {entryDate || "Select date"}
           </Text>
         </TouchableOpacity>
         <TouchableOpacity
           style={styles.datePickerField}
           onPress={() => {
             setShowDatePicker(true);
-            setDatePickerField("toDate");
+            setDatePickerField("exitDate");
           }}
         >
           <Text style={styles.datePickerLabel}>To Date </Text>
-          <Text style={styles.datePickerValue}>{toDate || "Select date"}</Text>
+          <Text style={styles.datePickerValue}>
+            {exitDate || "Select date"}
+          </Text>
         </TouchableOpacity>
         {showDatePicker && (
           <DateTimePicker
@@ -120,15 +127,19 @@ export default function FormModal({ isVisible, onClose, onSubmit }) {
           style={styles.input}
           placeholder="Number of Days"
           placeholderTextColor="gray"
-          value={numberOfDays}
-          onChangeText={(text) => setNumberOfDays(text)}
+          value={days}
+          onChangeText={(text) => setDays(text)}
           keyboardType="numeric"
         />
         <View style={styles.buttonContainer}>
-          <Button title="Submit" onPress={handleFormSubmit} />
+          <Button title="Submit" onPress={() => handleFormSubmit()} />
         </View>
         <View style={styles.buttonContainer}>
-          <Button title="Cancel" onPress={handleModalClose} color="red" />
+          <Button
+            title="Cancel"
+            onPress={() => handleModalClose(onClose)}
+            color="red"
+          />
         </View>
       </KeyboardAvoidingView>
     </Modal>

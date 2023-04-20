@@ -17,16 +17,18 @@ const AddTrip = async (req, res) => {
   console.log(trip);
   //the request body/ user input
   try {
-    await Trip.create({
+    const tripCreated = await Trip.create({
       // create a new entry in the db
       country: trip.country,
-      entrydate: trip.entrydate,
-      exitdate: trip.exitdate,
+      entrydate: trip.entryDate,
+      exitdate: trip.exitDate,
       days: trip.days,
     });
+    console.log(tripCreated);
     res.status(201);
-    res.json(`${trip.country}`);
+    res.send(tripCreated);
   } catch (e) {
+    console.log(e);
     res.status(500);
     res.send(e);
   }
