@@ -112,6 +112,7 @@ export default function TripView({ item, onDelete }) {
                 setEditedDays(newDays);
               }}
             />
+            <Text style={styles.inputLabel}>Exit Date</Text>
             <TextInput
               style={styles.input}
               value={editedExitDate}
@@ -182,7 +183,7 @@ const styles = StyleSheet.create({
   },
 
   miniContainer: {
-    backgroundColor: "grey",
+    backgroundColor: "#f0ffff",
   },
   formContainer: {
     width: "80%",
@@ -199,7 +200,6 @@ const styles = StyleSheet.create({
     fontSize: 24,
     fontWeight: "bold",
     marginBottom: 8,
-
     padding: 10,
   },
   input: {
@@ -207,12 +207,13 @@ const styles = StyleSheet.create({
     borderColor: "#ccc",
     borderWidth: 1,
     borderRadius: 4,
+    margin: 10,
   },
   buttonContainer: {
     flexDirection: "row",
     justifyContent: "flex-end",
     marginTop: 16,
-    backgroundColor: "grey",
+    backgroundColor: "#f0ffff",
   },
   cancelButton: {
     padding: 8,

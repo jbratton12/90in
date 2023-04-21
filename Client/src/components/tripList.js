@@ -4,14 +4,16 @@ import TripView from "./tripView";
 import { deleteFromDB, updateDB } from "../../../service";
 import { useDispatch } from "react-redux";
 import { setAllTrips, updateTrip } from "../redux/tripsSlice";
+import moment from "moment";
+moment.suppressDeprecationWarnings = true;
 
 export default function TripList({ tripArr }) {
   // Sort the tripArr by entryDate in ascending order - not currently working
-  const sortedTripArr = tripArr.sort((a, b) => {
-    const dateA = new Date(a.entrydate);
-    const dateB = new Date(b.entrydate);
-    return dateB - dateA;
-  });
+  console.log(tripArr);
+  const sortedTripArr = tripArr.sort(
+    (a, b) => new Date(a.date) - new Date(b.date)
+  );
+  console.log(sortedTripArr);
 
   const dispatch = useDispatch();
 
