@@ -41,6 +41,7 @@ export default function TripView({ item, onDelete }) {
   const [isEditModalVisible, setIsEditModalVisible] = useState(false);
   const [editedEntryDate, setEditedEntryDate] = useState(item.entrydate);
   const [editedExitDate, setEditedExitDate] = useState(item.exitdate);
+  const [editedDays, setEditedDays] = useState(item.days);
 
   // Handler for opening edit form modal
   const handleEdit = () => {
@@ -56,10 +57,11 @@ export default function TripView({ item, onDelete }) {
   const handleUpdate = async () => {
     // Update trip with edited dates
 
-    console.log(item, editedEntryDate, editedExitDate);
+    console.log(item, editedEntryDate, editedExitDate, days);
     const { trip } = await updateDB(item._id, {
       entrydate: editedEntryDate,
       exitdate: editedExitDate,
+      days: editedDays,
     });
     console.log(trip);
     dispatch(
@@ -67,6 +69,7 @@ export default function TripView({ item, onDelete }) {
         id: trip.id,
         entrydate: trip.entrydate,
         exitdate: trip.exitdate,
+        days: trip.days,
       })
     );
     setIsEditModalVisible(false);
@@ -99,13 +102,28 @@ export default function TripView({ item, onDelete }) {
             <TextInput
               style={styles.input}
               value={editedEntryDate}
-              onChangeText={setEditedEntryDate}
+              onChangeText={(text) => {
+                setEditedEntryDate(text);
+                // Update editedDays based on editedEntryDate and editedExitDate
+                const newEntryDate = moment(text, "DD-MM-YYYY");
+                const newDays = areDatesValid
+                  ? exitDate.diff(newEntryDate, "days") + 1
+                  : "Invalid Dates";
+                setEditedDays(newDays);
+              }}
             />
-            <Text style={styles.inputLabel}>Exit Date</Text>
             <TextInput
               style={styles.input}
               value={editedExitDate}
-              onChangeText={setEditedExitDate}
+              onChangeText={(text) => {
+                setEditedExitDate(text);
+                // Update editedDays based on editedEntryDate and editedExitDate
+                const newExitDate = moment(text, "DD-MM-YYYY");
+                const newDays = areDatesValid
+                  ? newExitDate.diff(entryDate, "days") + 1
+                  : "Invalid Dates";
+                setEditedDays(newDays);
+              }}
             />
             <View style={styles.buttonContainer}>
               <Button
