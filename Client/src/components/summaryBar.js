@@ -28,12 +28,12 @@ export default function SummaryBar() {
       .catch((error) => {
         console.error("Error fetching data:", error);
       });
-  }, []);
+  }, [totalDays]);
 
   return (
     <Text style={styles.container}>
       {isIn ? "You're out!" : "You're in!"} You have {totalDays} days remaining
-      to travel in the Schengen Zone from {moment().format("DD/M/YYYY")}
+      to travel in the Schengen Zone from {moment().format("DD/MM/YYYY")}
     </Text>
   );
 }

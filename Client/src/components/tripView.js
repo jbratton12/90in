@@ -7,7 +7,7 @@ import {
   TouchableOpacity,
 } from "react-native";
 import moment from "moment";
-import { deleteFromDB } from "../../../service";
+moment.suppressDeprecationWarnings = true;
 
 export default function TripView({ item, onDelete }) {
   // Parse entrydate and exitdate into Moment objects

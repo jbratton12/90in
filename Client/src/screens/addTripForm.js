@@ -12,6 +12,7 @@ import {
 import DateTimePicker from "@react-native-community/datetimepicker";
 import { postTrip } from "../../../service";
 import moment from "moment";
+moment.suppressDeprecationWarnings = true;
 
 export default function FormModal({ isVisible, onClose, onSubmit }) {
   const [country, setCountry] = useState("");

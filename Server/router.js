@@ -6,7 +6,7 @@ router.get("/trips", controllers.getAllTrips);
 
 router.post("/trips", controllers.AddTrip);
 
-// router.put("/trips", controllers.editTrip)
+router.patch("/trips/:id", controllers.updateTrip);
 
 router.delete("/trips/:id", controllers.deleteTrip);
 

@@ -4,6 +4,7 @@ import SummaryBar from "../components/summaryBar";
 import CurrentTrip from "../components/currentTrip";
 
 export default function HomeScreen() {
+  //   const [currentTrip, setCurrentTrip] = useState("");
   return (
     <SafeAreaView>
       <Text style={styles.container}>NinetyIn</Text>

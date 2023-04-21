@@ -10,11 +10,11 @@ export default function CurrentTrip() {
     fetch("http://192.168.0.198:3000/trips")
       .then((response) => response.json())
       .then((data) => {
-        const currentDate = moment().format("DD/M/YYYY");
+        const currentDate = moment().format("DD/MM/YYYY");
         const matchingTrip = data.find((trip) =>
-          moment(currentDate, "DD/M/YYYY").isBetween(
-            moment(trip.entrydate, "DD/M/YYYY"),
-            moment(trip.exitdate, "DD/M/YYYY"),
+          moment(currentDate, "DD-MM-YYYY").isBetween(
+            moment(trip.entrydate, "DD-MM-YYYY"),
+            moment(trip.exitdate, "DD-MM-YYYY"),
             null,
             "[]"
           )
@@ -24,7 +24,7 @@ export default function CurrentTrip() {
       .catch((error) => {
         console.error("Error fetching data:", error);
       });
-  }, []);
+  }, [currentTrip]);
   return (
     <View style={styles.container}>
       {currentTrip ? (
@@ -32,7 +32,7 @@ export default function CurrentTrip() {
           <Text style={styles.text}>Look at you having fun:</Text>
           <Text style={styles.text}>Trip Name: {currentTrip.country}</Text>
           <Text style={styles.text}>Entry Date: {currentTrip.entrydate}</Text>
-          <Text style={styles.text}>Entry Date: {currentTrip.exitdate}</Text>
+          <Text style={styles.text}>Exit Date: {currentTrip.exitdate}</Text>
           <Text style={styles.text}>Days: {currentTrip.days}</Text>
         </View>
       ) : (
@@ -52,5 +52,6 @@ const styles = StyleSheet.create({
   text: {
     fontSize: 16,
     marginVertical: 5,
+    textAlign: "center",
   },
 });

@@ -47,4 +47,39 @@ const deleteTrip = async (req, res) => {
   }
 };
 
-module.exports = { AddTrip, getAllTrips, deleteTrip };
+//patch request to Database
+const updateTrip = async (req, res) => {
+  const tripId = req.params.id;
+  const { entrydate, exitdate, days } = req.body;
+
+  try {
+    const trip = await Trip.findById(tripId);
+
+    if (!trip) {
+      // If trip is not found, send error response
+      return res.status(404).json({ error: "Trip not found" });
+    }
+
+    if (entrydate) {
+      trip.entrydate = entrydate;
+    }
+    if (exitdate) {
+      trip.exitdate = exitdate;
+    }
+    if (days) {
+      trip.days = days;
+    }
+
+    // Save the updated trip
+    await trip.save();
+
+    // Send success response
+    return res.json({ message: "Trip updated successfully", trip });
+  } catch (error) {
+    // Handle error and send error response
+    console.error("Error updating trip:", error);
+    return res.status(500).json({ error: "Failed to update trip" });
+  }
+};
+
+module.exports = { AddTrip, getAllTrips, deleteTrip, updateTrip };
