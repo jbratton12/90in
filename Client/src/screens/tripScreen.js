@@ -5,15 +5,19 @@ import { StatusBar } from "expo-status-bar";
 import { fetchTrips } from "../../../service";
 import { Button } from "react-native";
 import FormModal from "./addTripForm";
+import { useDispatch, useSelector } from "react-redux";
+import { setAllTrips, addTrip } from "../redux/tripsSlice";
 
 export default function TripScreen() {
   //Set state
-  const [tripArr, setTrips] = useState([]);
+  const dispatch = useDispatch();
+  const tripArr = useSelector((state) => state.trips);
+
   const [isFormVisible, setFormVisible] = useState(false);
 
   const handleFormSubmit = (inputValue) => {
     // Add the form input value to the listData state
-    setTrips([...tripArr, inputValue]);
+    dispatch(addTrip(inputValue));
     setFormVisible(false);
   };
 
@@ -24,7 +28,7 @@ export default function TripScreen() {
   useEffect(() => {
     const getTrips = async () => {
       const tripsFromDatabase = await fetchTrips();
-      setTrips(tripsFromDatabase);
+      dispatch(setAllTrips(tripsFromDatabase));
     };
     getTrips();
   }, []);
@@ -32,7 +36,7 @@ export default function TripScreen() {
   return (
     <SafeAreaView style={styles.container}>
       <Text style={styles.text}>NinetyIn</Text>
-      <TripList tripArr={tripArr} setTrips={setTrips} />
+      <TripList tripArr={tripArr} />
       <StatusBar style="auto" />
       <FormModal
         isVisible={isFormVisible}

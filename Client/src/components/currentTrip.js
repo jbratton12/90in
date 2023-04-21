@@ -1,39 +1,37 @@
 import React, { useState, useEffect } from "react";
 import { View, Text, StyleSheet } from "react-native";
 import moment from "moment";
+import { useSelector } from "react-redux";
 
-export default function CurrentTrip() {
-  const [currentTrip, setCurrentTrip] = useState("");
+export default function CurrentTrip({ currentTrip, set }) {
+  const [matchingTrip, setMatchingTrip] = useState();
+  const trips = useSelector((state) => state.trips);
+
+  useEffect(() => console.log("trips in currentTrip : ", trips), [trips]);
+  useEffect(() => console.log(matchingTrip), [matchingTrip]);
 
   useEffect(() => {
-    // Fetch data from your database here
-    fetch("http://192.168.0.198:3000/trips")
-      .then((response) => response.json())
-      .then((data) => {
-        const currentDate = moment().format("DD/MM/YYYY");
-        const matchingTrip = data.find((trip) =>
-          moment(currentDate, "DD-MM-YYYY").isBetween(
-            moment(trip.entrydate, "DD-MM-YYYY"),
-            moment(trip.exitdate, "DD-MM-YYYY"),
-            null,
-            "[]"
-          )
+    const currentDate = moment().format("DD-MM-YYYY");
+    setMatchingTrip(
+      trips.find((trip) => {
+        return moment(currentDate, "DD-MM-YYYY").isBetween(
+          moment(trip.entrydate, "DD-MM-YYYY"),
+          moment(trip.exitdate, "DD-MM-YYYY"),
+          null,
+          "[]"
         );
-        setCurrentTrip(matchingTrip); // Update state with the matching trip
       })
-      .catch((error) => {
-        console.error("Error fetching data:", error);
-      });
-  }, [currentTrip]);
+    );
+  }, [trips]);
   return (
     <View style={styles.container}>
-      {currentTrip ? (
+      {matchingTrip ? (
         <View>
           <Text style={styles.text}>Look at you having fun:</Text>
-          <Text style={styles.text}>Trip Name: {currentTrip.country}</Text>
-          <Text style={styles.text}>Entry Date: {currentTrip.entrydate}</Text>
-          <Text style={styles.text}>Exit Date: {currentTrip.exitdate}</Text>
-          <Text style={styles.text}>Days: {currentTrip.days}</Text>
+          <Text style={styles.text}>Trip Name: {matchingTrip.country}</Text>
+          <Text style={styles.text}>Entry Date: {matchingTrip.entrydate}</Text>
+          <Text style={styles.text}>Exit Date: {matchingTrip.exitdate}</Text>
+          <Text style={styles.text}>Days: {matchingTrip.days}</Text>
         </View>
       ) : (
         <Text style={styles.text}>Maybe you deserve some time away</Text>

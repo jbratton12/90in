@@ -2,6 +2,8 @@ import { StyleSheet, Text, View, SafeAreaView } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import TabNavigator from "./Client/src/screens/BottomTabsNavigator";
 import { createStackNavigator } from "@react-navigation/stack";
+import { store } from "./Client/src/redux/store";
+import { Provider } from "react-redux";
 
 const Stack = createStackNavigator();
 
@@ -11,9 +13,11 @@ function StackScreen() {
 
 export default function App() {
   return (
-    <NavigationContainer>
-      <TabNavigator />
-    </NavigationContainer>
+    <Provider store={store}>
+      <NavigationContainer>
+        <TabNavigator />
+      </NavigationContainer>
+    </Provider>
   );
 }
 

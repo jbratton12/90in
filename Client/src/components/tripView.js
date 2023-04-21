@@ -29,8 +29,6 @@ export default function TripView({ item, onDelete }) {
     onDelete(item); // Call the onDelete prop with the item object
   };
 
-  //  Delete Trip from the list
-
   return (
     <ScrollView style={styles.container} showsVerticalScrollIndicator={false}>
       <Text style={styles.text}>Country: {item.country}</Text>

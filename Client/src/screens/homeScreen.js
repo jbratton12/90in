@@ -1,15 +1,20 @@
-import React from "react";
-import { View, Text, StyleSheet, SafeAreaView, useState } from "react-native";
+import React, { useState, useEffect } from "react";
+import { View, Text, StyleSheet, SafeAreaView } from "react-native";
 import SummaryBar from "../components/summaryBar";
 import CurrentTrip from "../components/currentTrip";
 
 export default function HomeScreen() {
-  //   const [currentTrip, setCurrentTrip] = useState("");
+  // const [currentTrip, setCurrentTrip] = useState("");
+
+  const [currentTrip, setCurrentTrip] = useState("");
+
+  useEffect(() => console.log(currentTrip), [currentTrip]);
+
   return (
     <SafeAreaView>
       <Text style={styles.container}>NinetyIn</Text>
-      <SummaryBar />
-      <CurrentTrip />
+      <SummaryBar currentTrip={currentTrip} />
+      <CurrentTrip currentTrip={currentTrip} setCurrentTrip={setCurrentTrip} />
     </SafeAreaView>
   );
 }
