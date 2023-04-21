@@ -3,12 +3,12 @@ import { View, Text, StyleSheet } from "react-native";
 import moment from "moment";
 import { useSelector } from "react-redux";
 
-export default function CurrentTrip({ currentTrip, set }) {
+export default function CurrentTrip() {
   const [matchingTrip, setMatchingTrip] = useState();
   const trips = useSelector((state) => state.trips);
 
-  useEffect(() => console.log("trips in currentTrip : ", trips), [trips]);
-  useEffect(() => console.log(matchingTrip), [matchingTrip]);
+  // useEffect(() => console.log("trips in currentTrip : ", trips), [trips]);
+  // useEffect(() => console.log(matchingTrip), [matchingTrip]);
 
   useEffect(() => {
     const currentDate = moment().format("DD-MM-YYYY");
