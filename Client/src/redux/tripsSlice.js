@@ -23,7 +23,6 @@ export const tripSlice = createSlice({
       );
       state[indexToUpd].exitdate = action.payload.exitdate;
       state[indexToUpd].entrydate = action.payload.entrydate;
-      return [...state];
     },
   },
 });

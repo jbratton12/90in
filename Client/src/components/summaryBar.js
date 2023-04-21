@@ -3,14 +3,13 @@ import { View, Text, StyleSheet } from "react-native";
 import moment from "moment";
 import { useSelector } from "react-redux";
 
-export default function SummaryBar(currentTrip, set) {
-  const [totalDays, setTotalDays] = useState(90);
+export default function SummaryBar() {
+  const [totalDays, setTotalDays] = useState("");
   const [isIn, setIsIn] = useState(false); // Add state to track if user is in or out
   const trips = useSelector((state) => state.trips);
 
   useEffect(() => {
     // Fetch data from the database
-
     let totalDays = trips.reduce((acc, trip) => {
       return acc - trip.days; // sum up all the days on each trip in the DB
     }, 90);
@@ -29,7 +28,6 @@ export default function SummaryBar(currentTrip, set) {
       );
     });
     setIsIn(isInTrip);
-    console.log(isIn);
   }, [trips]);
 
   return (

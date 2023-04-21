@@ -67,14 +67,13 @@ export default function FormModal({ isVisible, onClose, onSubmit }) {
   };
 
   const handleFormSubmit = async () => {
-    // Form validation logic
     // Check if all fields are filled
     if (country === "" || entryDate === "" || exitDate === "") {
       alert("Please fill in all fields");
       return;
     }
 
-    // Check if entrydate and exitdate are valid
+    // Logic for calculating the number of days on a trip correctly
 
     const startDate = moment(entryDate, "DD-MM-YYYY");
     const endDate = moment(exitDate, "DD-MM-YYYY");

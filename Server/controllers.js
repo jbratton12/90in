@@ -74,6 +74,7 @@ const updateTrip = async (req, res) => {
     await trip.save();
 
     // Send success response
+    res.status(200);
     return res.json({ message: "Trip updated successfully", trip });
   } catch (error) {
     // Handle error and send error response

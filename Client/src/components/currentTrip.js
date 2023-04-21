@@ -7,9 +7,6 @@ export default function CurrentTrip() {
   const [matchingTrip, setMatchingTrip] = useState();
   const trips = useSelector((state) => state.trips);
 
-  // useEffect(() => console.log("trips in currentTrip : ", trips), [trips]);
-  // useEffect(() => console.log(matchingTrip), [matchingTrip]);
-
   useEffect(() => {
     const currentDate = moment().format("DD-MM-YYYY");
     setMatchingTrip(
@@ -34,7 +31,7 @@ export default function CurrentTrip() {
           <Text style={styles.text}>Days: {matchingTrip.days}</Text>
         </View>
       ) : (
-        <Text style={styles.text}>Maybe you deserve some time away</Text>
+        <Text style={styles.text}>Maybe you deserve some time away?</Text>
       )}
     </View>
   );

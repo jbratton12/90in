@@ -32,14 +32,14 @@ const deleteFromDB = async (id) => {
 
 //update trip in DB
 const updateDB = async (id, updatedData) => {
-  await fetch(`http://192.168.0.198:3000/trips/${id}`, {
+  const _res = await fetch(`http://192.168.0.198:3000/trips/${id}`, {
     method: "PATCH",
     body: JSON.stringify(updatedData), // Pass the updated data as JSON in the request body
     headers: {
       "Content-Type": "application/json",
     },
   });
-  return true;
+  return await _res.json();
 };
 
 module.exports = { fetchTrips, postTrip, deleteFromDB, updateDB };

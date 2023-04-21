@@ -3,12 +3,14 @@ import { View, FlatList, Text, StyleSheet } from "react-native";
 import TripView from "./tripView";
 import { deleteFromDB, updateDB } from "../../../service";
 import { useDispatch } from "react-redux";
-import { setAllTrips } from "../redux/tripsSlice";
+import { setAllTrips, updateTrip } from "../redux/tripsSlice";
 
 export default function TripList({ tripArr }) {
-  // Sort the tripArr by entryDate in ascending order
+  // Sort the tripArr by entryDate in ascending order - not currently working
   const sortedTripArr = tripArr.sort((a, b) => {
-    return new Date(a.entrydate) - new Date(b.entrydate);
+    const dateA = new Date(a.entrydate);
+    const dateB = new Date(b.entrydate);
+    return dateB - dateA;
   });
 
   const dispatch = useDispatch();
@@ -16,9 +18,9 @@ export default function TripList({ tripArr }) {
   const handleDelete = (trip) => {
     deleteFromDB(trip._id)
       .then(() => {
-        //     // If deleteFromDB returns a successful response, update the state with the filtered tripArr
+        // If deleteFromDB returns a successful response, update the state with the filtered tripArr
         const newList = tripArr.filter((item) => item._id !== trip._id);
-        console.log(newList);
+        // console.log(newList);
         dispatch(setAllTrips(newList));
       })
       .catch((error) => {
@@ -27,24 +29,13 @@ export default function TripList({ tripArr }) {
       });
   };
 
-  //   const handleEdit = (trip) => {
-
-  //  updateDB(trip._id)
-
-  //   };
-
   return (
     <View style={styles.container}>
       <FlatList
-        data={sortedTripArr} // Use sortedTripArr instead of tripArr
+        data={sortedTripArr}
         keyExtractor={(item) => item._id}
         renderItem={({ item }) => (
-          <TripView
-            item={item}
-            styles={styles.trips}
-            onDelete={handleDelete}
-            // onEdit={handleEdit}
-          />
+          <TripView item={item} styles={styles.trips} onDelete={handleDelete} />
         )}
       />
     </View>
