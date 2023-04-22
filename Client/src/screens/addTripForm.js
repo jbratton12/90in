@@ -126,7 +126,7 @@ export default function FormModal({ isVisible, onClose, onSubmit }) {
       onRequestClose={handleModalClose}
     >
       <KeyboardAvoidingView behavior="padding" style={styles.container}>
-        <Text style={styles.title}>Add Trip</Text>
+        <Text style={styles.title}>Add Trip {"\u2708"} </Text>
         <TextInput
           style={styles.input}
           placeholder="Country"
@@ -192,6 +192,7 @@ const styles = StyleSheet.create({
     fontSize: 24,
     fontWeight: "bold",
     marginBottom: 16,
+    color: "#483d8b",
   },
   input: {
     width: "100%",

@@ -3,7 +3,6 @@ import { View, Text, StyleSheet, SafeAreaView, Image } from "react-native";
 import SummaryBar from "../components/summaryBar";
 import CurrentTrip from "../components/currentTrip";
 import Map from "../components/map";
-import SpinningGlobe from "../components/spinning globe";
 
 export default function HomeScreen() {
   return (

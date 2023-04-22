@@ -26,9 +26,8 @@ export default function CurrentTrip() {
         {matchingTrip ? (
           <View>
             <Text style={styles.text}>
-              Look at you having fun {"\uD83D\uDE0E"}{" "}
+              Look at you having fun in {matchingTrip.country} {"\uD83D\uDE0E"}{" "}
             </Text>
-            <Text style={styles.text}>{matchingTrip.country}</Text>
             <Text style={styles.text}>
               Entry Date: {matchingTrip.entrydate}
             </Text>

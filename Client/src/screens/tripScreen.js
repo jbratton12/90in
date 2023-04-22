@@ -63,11 +63,6 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
   },
-
-  button: {
-    backgroundColor: "red",
-  },
-
   text: {
     backgroundColor: "lightblue",
     alignItems: "center",

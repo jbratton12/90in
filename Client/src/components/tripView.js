@@ -150,9 +150,10 @@ const styles = StyleSheet.create({
     borderWidth: 10,
     lineHeight: 1,
     borderRadius: 10,
+    display: "flex",
   },
   text: {
-    fontSize: 24,
+    fontSize: 20,
     lineHeight: 35, // Increase this value to adjust line height
   },
   deleteButton: {
@@ -161,22 +162,28 @@ const styles = StyleSheet.create({
     marginTop: 10,
     alignSelf: "flex-end",
     borderRadius: 10,
+    width: 100,
+    textAlign: "center",
   },
   deleteButtonText: {
     color: "white",
     fontWeight: "bold",
+    textAlign: "center",
   },
 
   editButton: {
     backgroundColor: "#87cefa",
     padding: 10,
     marginTop: 10,
-    alignSelf: "flex-start",
+    alignSelf: "flex-end",
     borderRadius: 10,
+    width: 100,
+    textAlign: "center",
   },
   editButtonText: {
     color: "white",
     fontWeight: "bold",
+    textAlign: "center",
   },
   modalContainer: {
     flex: 1,
