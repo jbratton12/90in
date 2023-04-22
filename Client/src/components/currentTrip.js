@@ -21,25 +21,31 @@ export default function CurrentTrip() {
     );
   }, [trips]);
   return (
-    <View style={styles.container}>
-      {matchingTrip ? (
-        <View>
-          <Text style={styles.text}>Look at you having fun:</Text>
-          <Text style={styles.text}>Trip Name: {matchingTrip.country}</Text>
-          <Text style={styles.text}>Entry Date: {matchingTrip.entrydate}</Text>
-          <Text style={styles.text}>Exit Date: {matchingTrip.exitdate}</Text>
-          <Text style={styles.text}>Days: {matchingTrip.days}</Text>
-        </View>
-      ) : (
-        <Text style={styles.text}>Maybe you deserve some time away?</Text>
-      )}
-    </View>
+    <>
+      <View style={styles.container}>
+        {matchingTrip ? (
+          <View>
+            <Text style={styles.text}>
+              Look at you having fun {"\uD83D\uDE0E"}{" "}
+            </Text>
+            <Text style={styles.text}>Trip Name: {matchingTrip.country}</Text>
+            <Text style={styles.text}>
+              Entry Date: {matchingTrip.entrydate}
+            </Text>
+            <Text style={styles.text}>Exit Date: {matchingTrip.exitdate}</Text>
+            <Text style={styles.text}>Days: {matchingTrip.days}</Text>
+          </View>
+        ) : (
+          <Text style={styles.text}>Maybe you deserve some time away?</Text>
+        )}
+      </View>
+    </>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: "orange",
+    backgroundColor: "lightblue",
     margin: 10,
     padding: 10,
     textAlign: "center",

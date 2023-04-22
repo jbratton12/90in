@@ -40,7 +40,7 @@ export default function SummaryBar() {
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: "orange",
+    backgroundColor: "lightblue",
     margin: 10,
     padding: 10,
     textAlign: "center",

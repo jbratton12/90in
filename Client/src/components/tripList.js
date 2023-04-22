@@ -46,7 +46,6 @@ export default function TripList({ tripArr }) {
 
 const styles = StyleSheet.create({
   container: {
-    // backgroundColor: "teal",
     flex: 1,
     height: 100,
     margin: 10,
