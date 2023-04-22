@@ -2,16 +2,39 @@ import React from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import homeScreen from "./homeScreen";
 import tripScreen from "./tripScreen";
-import { useState } from "react";
-import { View, Image, StyleSheet } from "react-native";
+import { Ionicons } from "@expo/vector-icons";
 
 const Tab = createBottomTabNavigator();
 
 export default function tabNavigator() {
   return (
     <Tab.Navigator>
-      <Tab.Screen name="Home" component={homeScreen} />
-      <Tab.Screen name="Trips" component={tripScreen} />
+      <Tab.Screen
+        name="Home"
+        component={homeScreen}
+        options={{
+          tabBarIcon: ({ focused, color, size }) => (
+            <Ionicons
+              name={focused ? "home" : "home-outline"} // Use the "home" icon when the tab is focused, and "home-outline" when it's not focused
+              size={size}
+              color={color}
+            />
+          ),
+        }}
+      />
+      <Tab.Screen
+        name="Trips"
+        component={tripScreen}
+        options={{
+          tabBarIcon: ({ focused, color, size }) => (
+            <Ionicons
+              name={focused ? "airplane" : "airplane-outline"} // Use the "airplane" icon when the tab is focused, and "airplane-outline" when it's not focused
+              size={size}
+              color={color}
+            />
+          ),
+        }}
+      />
     </Tab.Navigator>
   );
 }

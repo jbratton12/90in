@@ -51,11 +51,11 @@ const styles = StyleSheet.create({
     padding: 10,
     textAlign: "center",
     borderRadius: 10,
-    borderWidth: 10,
+    borderWidth: 5,
     borderColor: "lightblue",
   },
   text: {
-    fontSize: 20,
+    fontSize: 18,
     marginVertical: 5,
     textAlign: "center",
   },

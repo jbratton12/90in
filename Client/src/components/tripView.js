@@ -77,19 +77,20 @@ export default function TripView({ item, onDelete }) {
 
   return (
     <ScrollView style={styles.container} showsVerticalScrollIndicator={false}>
-      <Text style={styles.text}>Country: {item.country}</Text>
+      <Text style={styles.headerText}>{item.country}</Text>
       <Text style={styles.text}>Entry Date: {item.entrydate}</Text>
       <Text style={styles.text}>Exit Date: {item.exitdate}</Text>
       <Text style={styles.text}>
         Duration: {days} {daysText}
       </Text>
-      <TouchableOpacity onPress={handleDelete} style={styles.deleteButton}>
-        <Text style={styles.deleteButtonText}>Delete</Text>
-      </TouchableOpacity>
-      <TouchableOpacity onPress={handleEdit} style={styles.editButton}>
-        <Text style={styles.editButtonText}>Edit</Text>
-      </TouchableOpacity>
-
+      <View style={styles.buttonContainer}>
+        <TouchableOpacity onPress={handleDelete} style={styles.deleteButton}>
+          <Text style={styles.deleteButtonText}>Delete</Text>
+        </TouchableOpacity>
+        <TouchableOpacity onPress={handleEdit} style={styles.editButton}>
+          <Text style={styles.editButtonText}>Edit</Text>
+        </TouchableOpacity>
+      </View>
       <Modal
         visible={isEditModalVisible}
         animationType="slide"
@@ -144,22 +145,31 @@ export default function TripView({ item, onDelete }) {
 const styles = StyleSheet.create({
   container: {
     // backgroundColor: "pink",
-    margin: 10,
+    marginVertical: 10,
+    marginHorizontal: 0,
     padding: 10,
     borderColor: "lightblue",
-    borderWidth: 10,
+    borderWidth: 5,
     lineHeight: 1,
     borderRadius: 10,
     display: "flex",
   },
   text: {
+    fontSize: 16,
+    lineHeight: 25,
+    textAlign: "center", // Increase this value to adjust line height
+  },
+  headerText: {
+    textAlign: "center",
     fontSize: 20,
-    lineHeight: 35, // Increase this value to adjust line height
+    fontWeight: "bold",
+    color: "#4682b4",
+    marginBottom: 10,
   },
   deleteButton: {
     backgroundColor: "red",
     padding: 10,
-    marginTop: 10,
+    marginRight: 10,
     alignSelf: "flex-end",
     borderRadius: 10,
     width: 100,
@@ -172,7 +182,7 @@ const styles = StyleSheet.create({
   },
 
   editButton: {
-    backgroundColor: "#87cefa",
+    backgroundColor: "#4682b4",
     padding: 10,
     marginTop: 10,
     alignSelf: "flex-end",
@@ -194,6 +204,8 @@ const styles = StyleSheet.create({
 
   miniContainer: {
     backgroundColor: "#f0ffff",
+    width: 300,
+    borderRadius: 10,
   },
   formContainer: {
     width: "80%",
@@ -205,12 +217,15 @@ const styles = StyleSheet.create({
     fontSize: 24,
     fontWeight: "bold",
     marginBottom: 16,
+    textAlign: "center",
   },
   inputLabel: {
     fontSize: 24,
     fontWeight: "bold",
     marginBottom: 8,
     padding: 10,
+    textAlign: "center",
+    color: "#483d8b",
   },
   input: {
     padding: 10,
@@ -219,12 +234,12 @@ const styles = StyleSheet.create({
     borderRadius: 4,
     margin: 10,
     fontSize: 24,
+    textAlign: "center",
   },
   buttonContainer: {
     flexDirection: "row",
-    justifyContent: "flex-end",
-    marginTop: 16,
-    backgroundColor: "#f0ffff",
+    justifyContent: "center",
+    padding: 10,
   },
   cancelButton: {
     padding: 8,

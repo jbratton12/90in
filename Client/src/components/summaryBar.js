@@ -62,6 +62,6 @@ const styles = StyleSheet.create({
   },
   boldText: {
     fontWeight: "bold",
-    color: "#483d8b",
+    color: "#4682b4",
   },
 });

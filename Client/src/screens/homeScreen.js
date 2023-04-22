@@ -8,7 +8,11 @@ export default function HomeScreen() {
   return (
     <>
       <SafeAreaView>
-        <Text style={styles.container}>90In </Text>
+        <Image
+          source={require("../assets/logo.png")}
+          style={styles.image} // specify the styles for the image
+          resizeMode="contain"
+        />
         <SummaryBar />
         <CurrentTrip />
       </SafeAreaView>
@@ -38,5 +42,10 @@ const styles = StyleSheet.create({
     marginVertical: 10, // specify vertical margin as needed
     borderRadius: 10,
     overflow: "hidden", // hide overflow to prevent map from being cut off
+  },
+  image: {
+    width: "auto",
+    height: 88,
+    marginHorizontal: 0,
   },
 });

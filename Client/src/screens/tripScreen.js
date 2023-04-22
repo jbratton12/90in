@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { View, Text, SafeAreaView, StyleSheet } from "react-native";
+import { View, Text, SafeAreaView, StyleSheet, Image } from "react-native";
 import TripList from "../components/tripList";
 import { StatusBar } from "expo-status-bar";
 import { fetchTrips } from "../../../service";
@@ -36,16 +36,19 @@ export default function TripScreen() {
 
   return (
     <SafeAreaView style={styles.container}>
-      <Text style={styles.text}>90In</Text>
+      <Image
+        source={require("../assets/logo.png")}
+        style={styles.image} // specify the styles for the image
+        resizeMode="contain"
+      />
       <TripList tripArr={tripArr} />
       {/* <Map></Map> */}
-      <StatusBar style="auto" />
+      <StatusBar style={styles.StatusBar} />
       <FormModal
         isVisible={isFormVisible}
         onClose={handleFormToggle}
         onSubmit={handleFormSubmit}
       />
-
       <Button
         title="Add Trip"
         onPress={handleFormToggle}
@@ -59,7 +62,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     height: 100,
-    // backgroundColor: "pink",
     alignItems: "center",
     justifyContent: "center",
   },
@@ -74,5 +76,10 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     color: "#483d8b",
     width: 355,
+  },
+  image: {
+    width: 1000,
+    height: 85,
+    marginHorizontal: 0,
   },
 });
