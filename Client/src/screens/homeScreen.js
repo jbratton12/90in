@@ -17,7 +17,7 @@ export default function HomeScreen() {
         <CurrentTrip />
       </SafeAreaView>
       <View style={styles.map}>
-        <Map />
+        <Map></Map>
       </View>
     </>
   );
@@ -35,13 +35,19 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     color: "#483d8b",
   },
+  Imagecontainer: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+    backgroundColor: "#F5FCFF",
+  },
   map: {
     flex: 1,
-    height: 300, // specify the height of the map container
-    marginHorizontal: 10, // specify horizontal margin as needed
-    marginVertical: 10, // specify vertical margin as needed
+    height: 300,
+    marginHorizontal: 10,
+    marginVertical: 10,
     borderRadius: 10,
-    overflow: "hidden", // hide overflow to prevent map from being cut off
+    overflow: "hidden",
   },
   image: {
     width: "auto",
