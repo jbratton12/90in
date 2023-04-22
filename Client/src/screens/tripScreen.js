@@ -7,6 +7,7 @@ import { Button } from "react-native";
 import FormModal from "./addTripForm";
 import { useDispatch, useSelector } from "react-redux";
 import { setAllTrips, addTrip } from "../redux/tripsSlice";
+import Map from "../components/map";
 
 export default function TripScreen() {
   //Set state
@@ -35,14 +36,16 @@ export default function TripScreen() {
 
   return (
     <SafeAreaView style={styles.container}>
-      <Text style={styles.text}>NinetyIn</Text>
+      <Text style={styles.text}>90In</Text>
       <TripList tripArr={tripArr} />
+      {/* <Map></Map> */}
       <StatusBar style="auto" />
       <FormModal
         isVisible={isFormVisible}
         onClose={handleFormToggle}
         onSubmit={handleFormSubmit}
       />
+
       <Button
         title="Add Trip"
         onPress={handleFormToggle}
@@ -66,13 +69,15 @@ const styles = StyleSheet.create({
   },
 
   text: {
-    // flex: 1,
     backgroundColor: "lightblue",
     alignItems: "center",
     justifyContent: "center",
     textAlign: "center",
     padding: 10,
     margin: 10,
+    fontSize: 24,
+    fontWeight: "bold",
+    color: "#483d8b",
     width: 355,
   },
 });

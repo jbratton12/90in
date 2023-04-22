@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { View, Text, StyleSheet, SafeAreaView } from "react-native";
+import { View, Text, StyleSheet, SafeAreaView, Image } from "react-native";
 import SummaryBar from "../components/summaryBar";
 import CurrentTrip from "../components/currentTrip";
 import Map from "../components/map";
@@ -9,11 +9,11 @@ export default function HomeScreen() {
   return (
     <>
       <SafeAreaView>
-        <Text style={styles.container}>NinetyIn</Text>
+        <Text style={styles.container}>90In </Text>
         <SummaryBar />
         <CurrentTrip />
       </SafeAreaView>
-      <SpinningGlobe />
+      <Map />
     </>
   );
 }
@@ -27,5 +27,8 @@ const styles = StyleSheet.create({
     textAlign: "center",
     padding: 10,
     margin: 10,
+    fontSize: 24,
+    fontWeight: "bold",
+    color: "#483d8b",
   },
 });

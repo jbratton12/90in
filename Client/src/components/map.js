@@ -2,8 +2,8 @@ import React, { useState, useEffect } from "react";
 import { StyleSheet, Text, View } from "react-native";
 import MapView, { PROVIDER_GOOGLE, Marker } from "react-native-maps";
 export default function Map() {
-  const latitude = 51.8404652;
-  const longitude = 1.1362816537;
+  const latitude = 41.395;
+  const longitude = 2.1978;
   return (
     <>
       <MapView

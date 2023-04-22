@@ -143,22 +143,24 @@ export default function TripView({ item, onDelete }) {
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: "pink",
+    // backgroundColor: "pink",
     margin: 10,
     padding: 10,
-    borderColor: "pink",
-    borderWidth: 2,
+    borderColor: "lightblue",
+    borderWidth: 10,
     lineHeight: 1,
+    borderRadius: 10,
   },
   text: {
-    fontSize: 16,
-    lineHeight: 24, // Increase this value to adjust line height
+    fontSize: 24,
+    lineHeight: 35, // Increase this value to adjust line height
   },
   deleteButton: {
     backgroundColor: "red",
     padding: 10,
     marginTop: 10,
     alignSelf: "flex-end",
+    borderRadius: 10,
   },
   deleteButtonText: {
     color: "white",
@@ -166,10 +168,11 @@ const styles = StyleSheet.create({
   },
 
   editButton: {
-    backgroundColor: "blue",
+    backgroundColor: "#87cefa",
     padding: 10,
     marginTop: 10,
-    alignSelf: "flex-end",
+    alignSelf: "flex-start",
+    borderRadius: 10,
   },
   editButtonText: {
     color: "white",
@@ -208,6 +211,7 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderRadius: 4,
     margin: 10,
+    fontSize: 24,
   },
   buttonContainer: {
     flexDirection: "row",

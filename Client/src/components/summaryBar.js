@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { View, Text, StyleSheet } from "react-native";
+import { View, Text, StyleSheet, Alert } from "react-native";
 import moment from "moment";
 import { useSelector } from "react-redux";
 
@@ -30,10 +30,21 @@ export default function SummaryBar() {
     setIsIn(isInTrip);
   }, [trips]);
 
+  // Show an alert when totalDays reaches 0
+  useEffect(() => {
+    if (totalDays <= 0) {
+      Alert.alert(
+        "Alert",
+        "You've run out of days! Put that passport away for now"
+      );
+    }
+  }, [totalDays]);
+
   return (
     <Text style={styles.container}>
-      {isIn ? "You're in!" : "You're out!"} You have {totalDays} days remaining
-      to travel in the Schengen Zone from {moment().format("DD/MM/YYYY")}
+      {isIn ? "You're in!" : "You're out!"} You have{" "}
+      {totalDays >= 0 ? totalDays : 0} days remaining to travel in the Schengen
+      Zone from {moment().format("DD/MM/YYYY")}
     </Text>
   );
 }
@@ -44,5 +55,6 @@ const styles = StyleSheet.create({
     margin: 10,
     padding: 10,
     textAlign: "center",
+    borderRadius: 10,
   },
 });

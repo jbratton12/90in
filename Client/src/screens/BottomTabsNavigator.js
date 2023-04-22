@@ -3,6 +3,7 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import homeScreen from "./homeScreen";
 import tripScreen from "./tripScreen";
 import { useState } from "react";
+import { View, Image, StyleSheet } from "react-native";
 
 const Tab = createBottomTabNavigator();
 
