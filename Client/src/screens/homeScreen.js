@@ -13,14 +13,15 @@ export default function HomeScreen() {
         <SummaryBar />
         <CurrentTrip />
       </SafeAreaView>
-      <Map />
+      <View style={styles.map}>
+        <Map />
+      </View>
     </>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
-    // flex: 1,
     backgroundColor: "lightblue",
     alignItems: "center",
     justifyContent: "center",
@@ -30,5 +31,13 @@ const styles = StyleSheet.create({
     fontSize: 24,
     fontWeight: "bold",
     color: "#483d8b",
+  },
+  map: {
+    flex: 1,
+    height: 300, // specify the height of the map container
+    marginHorizontal: 10, // specify horizontal margin as needed
+    marginVertical: 10, // specify vertical margin as needed
+    borderRadius: 10,
+    overflow: "hidden", // hide overflow to prevent map from being cut off
   },
 });

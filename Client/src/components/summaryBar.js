@@ -43,8 +43,10 @@ export default function SummaryBar() {
   return (
     <Text style={styles.container}>
       {isIn ? "You're in!" : "You're out!"} You have{" "}
-      {totalDays >= 0 ? totalDays : 0} days remaining to travel in the Schengen
-      Zone from {moment().format("DD/MM/YYYY")}
+      <Text style={styles.boldText}>{totalDays >= 0 ? totalDays : 0}</Text>{" "}
+      <Text style={styles.boldText}>days</Text> remaining to travel in the
+      Schengen Zone from{" "}
+      <Text style={styles.boldText}>{moment().format("DD/MM/YYYY")}</Text>
     </Text>
   );
 }
@@ -56,5 +58,10 @@ const styles = StyleSheet.create({
     padding: 10,
     textAlign: "center",
     borderRadius: 10,
+    fontSize: 18,
+  },
+  boldText: {
+    fontWeight: "bold",
+    color: "#483d8b",
   },
 });

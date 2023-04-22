@@ -9,11 +9,11 @@ moment.suppressDeprecationWarnings = true;
 
 export default function TripList({ tripArr }) {
   // Sort the tripArr by entryDate in ascending order - not currently working
-  console.log(tripArr);
-  const sortedTripArr = tripArr.sort(
-    (a, b) => new Date(a.date) - new Date(b.date)
-  );
-  console.log(sortedTripArr);
+  // console.log(tripArr);
+  // const sortedTripArr = tripArr.sort(
+  //   (a, b) => new Date(a.date) - new Date(b.date)
+  // );
+  // console.log(sortedTripArr);
 
   const dispatch = useDispatch();
 
@@ -34,7 +34,7 @@ export default function TripList({ tripArr }) {
   return (
     <View style={styles.container}>
       <FlatList
-        data={sortedTripArr}
+        data={tripArr}
         keyExtractor={(item) => item._id}
         renderItem={({ item }) => (
           <TripView item={item} styles={styles.trips} onDelete={handleDelete} />
