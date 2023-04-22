@@ -2,14 +2,18 @@ import React, { useState, useEffect } from "react";
 import { View, Text, StyleSheet, SafeAreaView } from "react-native";
 import SummaryBar from "../components/summaryBar";
 import CurrentTrip from "../components/currentTrip";
+import Map from "../components/map";
 
 export default function HomeScreen() {
   return (
-    <SafeAreaView>
-      <Text style={styles.container}>NinetyIn</Text>
-      <SummaryBar />
-      <CurrentTrip />
-    </SafeAreaView>
+    <>
+      <SafeAreaView>
+        <Text style={styles.container}>NinetyIn</Text>
+        <SummaryBar />
+        <CurrentTrip />
+      </SafeAreaView>
+      <Map></Map>
+    </>
   );
 }
 
