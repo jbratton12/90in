@@ -56,8 +56,6 @@ export default function TripView({ item, onDelete }) {
   // Handler for updating trip with edited dates
   const handleUpdate = async () => {
     // Update trip with edited dates
-
-    console.log(item, editedEntryDate, editedExitDate, days);
     const { trip } = await updateDB(item._id, {
       entrydate: editedEntryDate,
       exitdate: editedExitDate,
@@ -144,7 +142,6 @@ export default function TripView({ item, onDelete }) {
 
 const styles = StyleSheet.create({
   container: {
-    // backgroundColor: "pink",
     marginVertical: 10,
     marginHorizontal: 0,
     padding: 10,
@@ -157,7 +154,7 @@ const styles = StyleSheet.create({
   text: {
     fontSize: 16,
     lineHeight: 25,
-    textAlign: "center", // Increase this value to adjust line height
+    textAlign: "center",
   },
   headerText: {
     textAlign: "center",
@@ -222,10 +219,10 @@ const styles = StyleSheet.create({
   inputLabel: {
     fontSize: 24,
     fontWeight: "bold",
-    marginBottom: 8,
+
     padding: 10,
     textAlign: "center",
-    color: "#483d8b",
+    color: "#778899",
   },
   input: {
     padding: 10,

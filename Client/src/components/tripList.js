@@ -8,12 +8,12 @@ import moment from "moment";
 moment.suppressDeprecationWarnings = true;
 
 export default function TripList({ tripArr }) {
-  // Sort the tripArr by entryDate in ascending order - not currently working
-  // console.log(tripArr);
+  // // Sort the tripArr by entryDate in ascending order - not currently working
+  // // console.log(tripArr);
   // const sortedTripArr = tripArr.sort(
   //   (a, b) => new Date(a.date) - new Date(b.date)
   // );
-  // console.log(sortedTripArr);
+  // // console.log(sortedTripArr);
 
   const dispatch = useDispatch();
 

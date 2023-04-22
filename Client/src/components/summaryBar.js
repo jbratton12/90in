@@ -53,12 +53,13 @@ export default function SummaryBar() {
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: "lightblue",
     margin: 10,
     padding: 10,
     textAlign: "center",
     borderRadius: 10,
-    fontSize: 18,
+    // borderWidth: 5,
+    borderColor: "lightblue",
+    fontSize: 20,
   },
   boldText: {
     fontWeight: "bold",

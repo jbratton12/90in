@@ -63,7 +63,6 @@ export default function TripScreen() {
         />
       )}
       <TripList tripArr={tripArr} />
-      {/* <Map></Map> */}
       <StatusBar style={styles.StatusBar} />
       <FormModal
         isVisible={isFormVisible}
@@ -104,7 +103,6 @@ const styles = StyleSheet.create({
   },
   backgroundimage: {
     flex: 100,
-    // height: 1000,
     marginTop: 0,
     justifyContent: "center",
     alignItems: "center",
