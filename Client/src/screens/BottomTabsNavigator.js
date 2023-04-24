@@ -2,6 +2,7 @@ import React from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import homeScreen from "./homeScreen";
 import tripScreen from "./tripScreen";
+import InspirationScreen from "./inspiration";
 import { Ionicons } from "@expo/vector-icons";
 
 const Tab = createBottomTabNavigator();
@@ -29,6 +30,20 @@ export default function tabNavigator() {
           tabBarIcon: ({ focused, color, size }) => (
             <Ionicons
               name={focused ? "airplane" : "airplane-outline"}
+              size={size}
+              color={color}
+            />
+          ),
+        }}
+      />
+
+      <Tab.Screen
+        name="Inspiration"
+        component={InspirationScreen}
+        options={{
+          tabBarIcon: ({ focused, color, size }) => (
+            <Ionicons
+              name={focused ? "bulb" : "bulb-outline"}
               size={size}
               color={color}
             />

@@ -18,14 +18,3 @@ export default function App() {
     </Provider>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "pink",
-    alignItems: "center",
-    justifyContent: "center",
-    // padding: 10,
-    // margin: 10,
-  },
-});
