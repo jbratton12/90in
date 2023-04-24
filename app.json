@@ -10,7 +10,7 @@
     ],
     "ios": {
       "supportsTablet": true,
-      "config.googleMapsApiKey":"AIzaSyAfsLkLH6Iqxs60q30y8M5lIiEOn9alRvY"
+      "config.googleMapsApiKey": "process.env.REACT_APP_API_KEY"
     },
     "android": {
     },

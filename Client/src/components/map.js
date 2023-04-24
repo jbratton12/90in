@@ -1,5 +1,8 @@
 import React, { useState, useEffect } from "react";
+import { Text } from "react-native";
 import MapView, { PROVIDER_GOOGLE, Marker } from "react-native-maps";
+import { API_KEY } from "@env";
+
 export default function Map() {
   const latitude = 41.395;
   const longitude = 2.1978;

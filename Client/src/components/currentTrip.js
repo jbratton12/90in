@@ -40,6 +40,9 @@ export default function CurrentTrip() {
             <Text style={styles.text}>
               Maybe you deserve some time away from Codeworks? {"\uD83C\uDFD6"}
             </Text>
+            <View>
+              <Map style={styles.map}></Map>
+            </View>
           </>
         )}
       </View>
@@ -62,11 +65,12 @@ const styles = StyleSheet.create({
     textAlign: "center",
   },
   map: {
-    flex: 1,
+    flex: 4,
     height: 300,
     marginHorizontal: 10,
     marginVertical: 10,
     borderRadius: 10,
     overflow: "hidden",
+    backgroundColor: "orange",
   },
 });
