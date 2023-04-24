@@ -219,7 +219,6 @@ const styles = StyleSheet.create({
   inputLabel: {
     fontSize: 24,
     fontWeight: "bold",
-
     padding: 10,
     textAlign: "center",
     color: "#778899",
@@ -230,7 +229,8 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderRadius: 4,
     margin: 10,
-    fontSize: 24,
+    fontSize: 20,
+    fontWeight: "bold",
     textAlign: "center",
   },
   buttonContainer: {

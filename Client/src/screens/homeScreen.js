@@ -9,17 +9,16 @@ import {
 } from "react-native";
 import SummaryBar from "../components/summaryBar";
 import CurrentTrip from "../components/currentTrip";
-import Map from "../components/map";
 
 export default function HomeScreen() {
   return (
     <>
+      <Image
+        source={require("../assets/logo.png")}
+        style={styles.image} // specify the styles for the image
+        resizeMode="contain"
+      />
       <ScrollView>
-        <Image
-          source={require("../assets/logo.png")}
-          style={styles.image} // specify the styles for the image
-          resizeMode="contain"
-        />
         <SummaryBar />
         <CurrentTrip />
       </ScrollView>

@@ -1,8 +1,7 @@
 import React from "react";
-import { useDispatch } from "react-redux";
-import { useSelector } from "react-redux";
 import MapView, { PROVIDER_GOOGLE, Marker } from "react-native-maps";
 
+// Array of schengenCountries
 const schengenCountries = [
   { country: "Austria", latitude: 47.5162, longitude: 14.5501 },
   { country: "Belgium", latitude: 50.5039, longitude: 4.4699 },

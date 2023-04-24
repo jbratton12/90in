@@ -28,7 +28,7 @@ export default function tabNavigator() {
         options={{
           tabBarIcon: ({ focused, color, size }) => (
             <Ionicons
-              name={focused ? "airplane" : "airplane-outline"} // Use the "airplane" icon when the tab is focused, and "airplane-outline" when it's not focused
+              name={focused ? "airplane" : "airplane-outline"}
               size={size}
               color={color}
             />

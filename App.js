@@ -4,12 +4,10 @@ import TabNavigator from "./Client/src/screens/BottomTabsNavigator";
 import { createStackNavigator } from "@react-navigation/stack";
 import { store } from "./Client/src/redux/store";
 import { Provider } from "react-redux";
+import { useState } from "react";
+import LoginScreen from "./Client/src/screens/loginScreen";
 
 const Stack = createStackNavigator();
-
-function StackScreen() {
-  return <Stack.Navigator>{/* Add your stack screens here */}</Stack.Navigator>;
-}
 
 export default function App() {
   return (
