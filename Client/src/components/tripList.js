@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { View, FlatList, Text, StyleSheet } from "react-native";
+import { View, FlatList, Text, StyleSheet, ScrollView } from "react-native";
 import TripView from "./tripView";
 import { deleteFromDB, updateDB } from "../../../service";
 import { useDispatch } from "react-redux";

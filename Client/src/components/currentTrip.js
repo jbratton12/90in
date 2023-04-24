@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { View, Text, StyleSheet, SafeAreaView } from "react-native";
+import { View, Text, StyleSheet, SafeAreaView, ScrollView } from "react-native";
 import moment from "moment";
 import { useSelector } from "react-redux";
 import Map from "./map";
@@ -36,14 +36,14 @@ export default function CurrentTrip() {
             <Text style={styles.text}>Total days: {matchingTrip.days}</Text>
           </View>
         ) : (
-          <>
+          <View>
             <Text style={styles.text}>
               Maybe you deserve some time away from Codeworks? {"\uD83C\uDFD6"}
             </Text>
-            <View>
-              <Map style={styles.map}></Map>
+            <View style={styles.map}>
+              <Map></Map>
             </View>
-          </>
+          </View>
         )}
       </View>
     </>

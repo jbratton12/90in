@@ -1,5 +1,12 @@
 import React, { useState, useEffect } from "react";
-import { View, Text, StyleSheet, SafeAreaView, Image } from "react-native";
+import {
+  View,
+  Text,
+  StyleSheet,
+  SafeAreaView,
+  Image,
+  ScrollView,
+} from "react-native";
 import SummaryBar from "../components/summaryBar";
 import CurrentTrip from "../components/currentTrip";
 import Map from "../components/map";
@@ -7,7 +14,7 @@ import Map from "../components/map";
 export default function HomeScreen() {
   return (
     <>
-      <SafeAreaView>
+      <ScrollView>
         <Image
           source={require("../assets/logo.png")}
           style={styles.image} // specify the styles for the image
@@ -15,10 +22,7 @@ export default function HomeScreen() {
         />
         <SummaryBar />
         <CurrentTrip />
-      </SafeAreaView>
-      <View style={styles.map}>
-        <Map></Map>
-      </View>
+      </ScrollView>
     </>
   );
 }
@@ -47,7 +51,7 @@ const styles = StyleSheet.create({
     marginHorizontal: 10,
     marginVertical: 10,
     borderRadius: 10,
-    overflow: "hidden",
+    overflow: "visible",
   },
   image: {
     width: "auto",
