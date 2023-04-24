@@ -3,9 +3,10 @@ import { View, Text, StyleSheet, SafeAreaView, ScrollView } from "react-native";
 import moment from "moment";
 import { useSelector } from "react-redux";
 import Map from "./map";
+import OptionalMap from "./optionalMap";
 
 export default function CurrentTrip() {
-  const [matchingTrip, setMatchingTrip] = useState();
+  const [matchingTrip, setMatchingTrip] = useState("");
   const trips = useSelector((state) => state.trips);
 
   useEffect(() => {
@@ -34,6 +35,9 @@ export default function CurrentTrip() {
             </Text>
             <Text style={styles.text}>Exit Date: {matchingTrip.exitdate}</Text>
             <Text style={styles.text}>Total days: {matchingTrip.days}</Text>
+            <View style={styles.map}>
+              <OptionalMap matchingTrip={matchingTrip}></OptionalMap>
+            </View>
           </View>
         ) : (
           <View>
