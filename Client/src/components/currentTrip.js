@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { View, Text, StyleSheet } from "react-native";
+import { View, Text, StyleSheet, SafeAreaView } from "react-native";
 import moment from "moment";
 import { useSelector } from "react-redux";
 import Map from "./map";
@@ -60,5 +60,13 @@ const styles = StyleSheet.create({
     fontSize: 18,
     marginVertical: 5,
     textAlign: "center",
+  },
+  map: {
+    flex: 1,
+    height: 300,
+    marginHorizontal: 10,
+    marginVertical: 10,
+    borderRadius: 10,
+    overflow: "hidden",
   },
 });
