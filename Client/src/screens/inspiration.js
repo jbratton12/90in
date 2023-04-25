@@ -55,7 +55,7 @@ const InspirationScreen = () => {
       { name: "Lithuania", icon: "cloudy-night-outline" },
       { name: "Luxembourg", icon: "car-sport-outline" },
       { name: "Malta", icon: "boat-outline" },
-      { name: "Netherlands", icon: "bicycle-outline" },
+      { name: "The Netherlands", icon: "bicycle-outline" },
       { name: "Norway", icon: "infinite-outline" },
       { name: "Poland", icon: "logo-euro" },
       { name: "Portugal", icon: "football-outline" },
