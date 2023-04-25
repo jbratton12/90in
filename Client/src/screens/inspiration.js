@@ -1,5 +1,12 @@
 import React, { useState } from "react";
-import { View, StyleSheet, TouchableOpacity, Modal, Text } from "react-native";
+import {
+  View,
+  StyleSheet,
+  TouchableOpacity,
+  Modal,
+  Text,
+  ScrollView,
+} from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 
 const InspirationScreen = () => {
@@ -72,8 +79,9 @@ const InspirationScreen = () => {
 
   return (
     <View style={styles.container}>
-      {renderCountryIcons()}
-
+      <ScrollView contentContainerStyle={styles.countryIconsContainer}>
+        {renderCountryIcons()}
+      </ScrollView>
       <Modal
         visible={modalVisible}
         animationType="slide"
@@ -110,12 +118,14 @@ const InspirationScreen = () => {
               </Text>
             </View>
           )}
-          <TouchableOpacity
-            style={styles.modalCloseButton}
-            onPress={() => setModalVisible(false)}
-          >
-            <Text style={styles.modalCloseButtonText}>Close</Text>
-          </TouchableOpacity>
+          <View style={styles.buttonContainer}>
+            <TouchableOpacity
+              style={styles.planaTripButton}
+              onPress={() => setModalVisible(false)}
+            >
+              <Text style={styles.modalCloseButtonText}>Plan a trip!</Text>
+            </TouchableOpacity>
+          </View>
         </View>
       </Modal>
     </View>
@@ -133,7 +143,12 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     marginVertical: 10,
-    width: "100%",
+    width: 100,
+  },
+  countryIconsContainer: {
+    flexDirection: "row",
+    flexWrap: "wrap",
+    justifyContent: "space-around",
   },
   countryName: {
     marginTop: 5,
@@ -156,15 +171,27 @@ const styles = StyleSheet.create({
     padding: 10,
     backgroundColor: "black",
     borderRadius: 5,
+    width: 100,
   },
   modalCloseButtonText: {
     color: "white",
     fontSize: 16,
     textAlign: "center",
+    fontWeight: "bold",
   },
   infofields: {
     fontSize: 24,
     lineHeight: 50,
+  },
+  planaTripButton: {
+    marginTop: 20,
+    marginLeft: 30,
+    padding: 10,
+    backgroundColor: "#20b2aa",
+    borderRadius: 5,
+  },
+  buttonContainer: {
+    flexDirection: "row",
   },
 });
 
