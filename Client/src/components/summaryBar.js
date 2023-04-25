@@ -35,7 +35,7 @@ export default function SummaryBar() {
     if (totalDays <= 0) {
       Alert.alert(
         "Alert",
-        "You've run out of days! Put that passport away for now \u{1F6C2}"
+        "You've run out of days! Put that passport away for now and amend your trip dates   \u{1F6C2}"
       );
     }
   }, [totalDays]);

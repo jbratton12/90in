@@ -60,8 +60,9 @@ const InspirationScreen = () => {
       { name: "Poland", icon: "hammer-outline" },
       { name: "Portugal", icon: "football-outline" },
       { name: "Slovakia", icon: "camera-outline" },
-      { name: "Slovenia", icon: "earth-outline" },
+      { name: "Slovenia", icon: "walk-outline" },
       { name: "Spain", icon: "tennisball-outline" },
+      { name: "Sweden", icon: "earth-outline" },
       { name: "Switzerland", icon: "cash-outline" },
     ];
 
@@ -111,9 +112,9 @@ const InspirationScreen = () => {
               <Text style={styles.infofields}>
                 Visited?{" "}
                 {selectedCountry.visited ? (
-                  <Ionicons name="checkmark-outline" size={30} color="green" />
+                  <Ionicons name="checkmark-outline" size={25} color="green" />
                 ) : (
-                  <Ionicons name="close-outline" size={30} color="red" />
+                  <Ionicons name="close-outline" size={25} color="red" />
                 )}
               </Text>
             </View>
@@ -158,13 +159,14 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
-    backgroundColor: "white",
+    backgroundColor: "#fffaf0",
   },
   modalCountryName: {
     fontSize: 36,
     fontWeight: "bold",
     marginBottom: 10,
     textAlign: "center",
+    color: "#008b8b",
   },
   modalCloseButton: {
     marginTop: 20,
@@ -192,6 +194,7 @@ const styles = StyleSheet.create({
   },
   buttonContainer: {
     flexDirection: "row",
+    marginRight: 30,
   },
 });
 
